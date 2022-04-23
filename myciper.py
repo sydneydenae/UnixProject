@@ -19,5 +19,8 @@ for line in sys.stdin:
     #Shift
     for char in newString:
         newASC = ord(char) + shiftNum
+        #If out of bounds
+        if newASC > 90:
+            newASC -= 26
         shiftString += chr(newASC)
     print(shiftString)
