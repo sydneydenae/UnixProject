@@ -1,6 +1,4 @@
 import sys
- 
-newString = ""
 
 # Set Cipher num equal to input num
 shiftNum = int(sys.argv[1])
@@ -8,13 +6,13 @@ shiftNum = int(sys.argv[1])
 for line in sys.stdin:
     newString = ""
     shiftString = ""
+    spacedString = ""
     line = line.upper()
 
     #Discard everything but letters
     for char in line:
         if ord(char) > 64 and ord(char) < 91:
             newString += char
-    print(newString)
 
     #Shift
     for char in newString:
@@ -23,4 +21,14 @@ for line in sys.stdin:
         if newASC > 90:
             newASC -= 26
         shiftString += chr(newASC)
-    print(shiftString)
+
+    #Formatting
+    count = 0
+    for char in shiftString:
+        if count == 5:
+            spacedString += " "
+            count = 0
+        spacedString += char
+        count += 1
+    print(spacedString)
+
