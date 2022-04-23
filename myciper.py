@@ -7,6 +7,7 @@ for line in sys.stdin:
     newString = ""
     shiftString = ""
     spacedString = ""
+    formatString = ""
     line = line.upper()
 
     #Discard everything but letters
@@ -30,5 +31,16 @@ for line in sys.stdin:
             count = 0
         spacedString += char
         count += 1
-    print(spacedString)
+
+    spaceCount = 0
+    for char in spacedString:
+        if char == " ":
+            spaceCount += 1
+        if spaceCount == 10:
+            formatString += "\n"
+            spaceCount = 0
+        else:
+            formatString += char
+    print(formatString)
+
 
